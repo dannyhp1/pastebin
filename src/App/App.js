@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import axios from 'axios';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Header from '../components/Header';
 import Paste from '../components/Paste';
+import Editor from '../components/Editor';
 import './App.css';
 
 // Backend endpoint to save data.
@@ -22,6 +22,13 @@ class App extends Component {
         <Header />
 
         <Router>
+          <div>
+            <Route 
+              exact
+              path='/' 
+              render={(props) => <Editor {...props} post_url={POST_URL} get_url={GET_URL} />}
+            />
+          </div>
           <div>
             <Route 
               exact

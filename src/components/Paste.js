@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import AceEditor from 'react-ace';
-import { Grid, Button } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 
 import 'ace-builds/src-noconflict/mode-java';
 import 'ace-builds/src-noconflict/mode-python';

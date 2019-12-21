@@ -2,13 +2,15 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import AceEditor from 'react-ace';
-import { Grid, Button } from '@material-ui/core';
+import { Grid, Button, CircularProgress } from '@material-ui/core';
 
 import 'ace-builds/src-noconflict/mode-java';
 import 'ace-builds/src-noconflict/mode-python';
 import 'ace-builds/src-noconflict/mode-c_cpp';
 import 'ace-builds/src-noconflict/mode-plain_text';
 import 'ace-builds/src-noconflict/theme-monokai';
+
+const theme = 'monokai'
 
 class Editor extends Component {
   constructor(props) {
@@ -79,6 +81,24 @@ class Editor extends Component {
     })
   }
 
+  renderSubmit = () => {
+    if(this.state.disabled) {
+      return (
+        <CircularProgress />
+      )
+    } else {
+      return (
+        <Button 
+          variant='contained' color='primary' 
+          onClick={this.uploadPaste} 
+          disabled={this.state.disabled} 
+          style={{ background: '#0269a4', marginRight: '0.75%' }}>
+          Upload Paste
+        </Button>
+      )
+    }
+  }
+
   render() {
     if(this.state.post_id === null) {
       return (
@@ -87,7 +107,7 @@ class Editor extends Component {
               <AceEditor
                 name='editor'
                 mode={this.props.language}
-                theme='monokai'
+                theme={theme}
                 height={this.state.editorHeight}
                 width={this.state.editorWidth}
                 value={this.state.text}
@@ -101,14 +121,8 @@ class Editor extends Component {
                 }}
               />
             </Grid>
-            
             <Grid item xs={12} style={{ textAlign: 'right', marginTop: '0.75%' }}>
-              <Button variant='contained' color='primary' 
-                onClick={this.uploadPaste} 
-                disabled={this.state.disabled} 
-                style={{ background: '#0269a4', marginRight: '0.75%' }}>
-                {this.state.disabled ? 'Uploading paste...' : 'Upload Paste'}
-              </Button>
+              {this.renderSubmit()}
             </Grid>
           </Grid>
       )

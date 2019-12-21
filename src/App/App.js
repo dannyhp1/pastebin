@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import axios from 'axios';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Header from '../components/Header';
 import Paste from '../components/Paste';
+import Editor from '../components/Editor';
 import './App.css';
 
 // Backend endpoint to save data.
 const DEV_POST_URL = 'http://localhost:5000/pastebin_save'
-const PROD_POST_URL = 'http://localhost:5000/pastebin_save'
+const PROD_POST_URL = 'https://dev.dannyhp.com:8443/pastebin_save'
 const POST_URL = PROD_POST_URL
 
 // Backend endpoint to load data.
 const DEV_GET_URL = 'http://localhost:5000/pastebin_load/%s'
-const PROD_GET_URL= 'http://localhost:5000/pastebin_load/%s'
+const PROD_GET_URL= 'https://dev.dannyhp.com:8443/pastebin_load/%s'
 const GET_URL = PROD_GET_URL
 
 class App extends Component {
@@ -22,6 +22,13 @@ class App extends Component {
         <Header />
 
         <Router>
+          <div>
+            <Route 
+              exact
+              path='/' 
+              render={(props) => <Editor {...props} post_url={POST_URL} get_url={GET_URL} />}
+            />
+          </div>
           <div>
             <Route 
               exact

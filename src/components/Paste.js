@@ -86,7 +86,7 @@ class Paste extends Component {
 
     Notification.addNotification({
       title: 'Link copied to clipboard!',
-      message: 'You can now share your new paste with anyone!',
+      message: 'You can now share your paste with anyone!',
       type: 'success',
       insert: 'bottom',
       container: 'bottom-left',

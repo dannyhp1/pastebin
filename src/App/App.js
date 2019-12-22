@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import ReactNotification from 'react-notifications-component';
 import Header from '../components/Header';
 import Paste from '../components/Paste';
 import Editor from '../components/Editor';
+import 'react-notifications-component/dist/theme.css'
 import './App.css';
 
 // Backend endpoint to save data.
@@ -18,25 +20,27 @@ const GET_URL = PROD_GET_URL
 class App extends Component {
   render() {
     return (
-      <div className='App'>
-        <Header />
-
-        <Router>
-          <div>
-            <Route 
-              exact
-              path='/' 
-              render={(props) => <Editor {...props} post_url={POST_URL} get_url={GET_URL} />}
-            />
-          </div>
-          <div>
-            <Route 
-              exact
-              path='/:id' 
-              render={(props) => <Paste {...props} get_url={GET_URL} />}
-            />
-          </div>
-        </Router>
+      <div>
+        <ReactNotification />
+        <div className='App'>
+          <Header />
+          <Router>
+            <div>
+              <Route 
+                exact
+                path='/' 
+                render={(props) => <Editor {...props} post_url={POST_URL} get_url={GET_URL} />}
+              />
+            </div>
+            <div>
+              <Route 
+                exact
+                path='/:id' 
+                render={(props) => <Paste {...props} get_url={GET_URL} />}
+              />
+            </div>
+          </Router>
+        </div>
       </div>
     )
   }

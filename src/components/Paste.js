@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import AceEditor from 'react-ace';
+import copy from 'copy-to-clipboard';
+import { store as Notification } from 'react-notifications-component';
 import { Grid, Button, Chip } from '@material-ui/core';
 
 import 'ace-builds/src-noconflict/mode-java';
@@ -22,7 +24,7 @@ class Paste extends Component {
         type: '',
       },
       new: false,
-      editorHeight: '90vh',
+      editorHeight: '85vh',
       editorWidth: 'auto'
     }
     this.getPaste()
@@ -78,6 +80,25 @@ class Paste extends Component {
       })
   }
 
+  copyToClipboard = () => {
+    const post_url = window.location.origin + '/' + this.props.match.params.id
+    copy(post_url)
+
+    Notification.addNotification({
+      title: 'Link copied to clipboard!',
+      message: 'You can now share your new paste with anyone!',
+      type: 'success',
+      insert: 'bottom',
+      container: 'bottom-left',
+      animationIn: ['animated', 'bounceIn'],
+      animationOut: ['animated', 'zoomOut'],
+      dismiss: {
+        duration: 3000,
+        onScreen: false
+      }
+    });
+  }
+
   redirectHome = () => {
     this.setState({
       ...this.state,
@@ -96,6 +117,12 @@ class Paste extends Component {
               <Chip label={this.state.paste.type} />
             </Grid>
             <Grid item xs={6} style={{ textAlign: 'right', paddingRight: '0.5%', paddingTop: '0.5%' }} >
+              <Button 
+                variant='contained' color='primary' 
+                onClick={this.copyToClipboard} 
+                style={{ background: '#0269a4', marginRight: '0.5%' }}>
+                Copy Link
+              </Button>
               <Button 
                 variant='contained' color='primary' 
                 onClick={this.redirectHome} 

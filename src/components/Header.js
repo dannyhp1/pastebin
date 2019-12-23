@@ -1,4 +1,5 @@
 import React from 'react'
+import { Redirect } from 'react-router-dom';
 import { makeStyles, AppBar, Toolbar, Typography, IconButton } from '@material-ui/core';
 import logo from '../resources/logo.png'
 
@@ -33,7 +34,12 @@ export default function Header() {
     <div className={classes.root}>
       <AppBar position='static' className={classes.bar}>
         <Toolbar>
-          <IconButton edge='start' className={classes.menuButton} color='inherit' aria-label='menu'>
+          <IconButton 
+            edge='start' 
+            className={classes.menuButton} 
+            color='inherit' 
+            aria-label='menu'
+          >
             <img className={classes.logo} src={logo} alt='Logo' />
           </IconButton>
           <Typography variant='h5' className={classes.title}>

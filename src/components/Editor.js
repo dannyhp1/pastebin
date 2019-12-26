@@ -56,6 +56,11 @@ class Editor extends Component {
   }
 
   uploadPaste = () => {
+    if(this.state.text === ``) {
+      alert('You cannot upload an empty paste.')
+      return
+    }
+
     // TODO: Add options for author and for code highlighting.
     this.setInProgress()
     

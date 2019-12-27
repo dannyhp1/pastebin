@@ -27,6 +27,10 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+const redirectToSource = () => {
+  window.location.assign('https://github.com/dannyhp1/pastebin')
+}
+
 export default function Header() {
   const classes = useStyles()
 
@@ -39,6 +43,7 @@ export default function Header() {
             className={classes.menuButton} 
             color='inherit' 
             aria-label='menu'
+            onClick={redirectToSource}
           >
             <img className={classes.logo} src={logo} alt='Logo' />
           </IconButton>

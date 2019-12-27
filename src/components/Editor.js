@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import AceEditor from 'react-ace';
-import { Grid, Button, CircularProgress } from '@material-ui/core';
+import { Grid, Button, CircularProgress, Select, MenuItem } from '@material-ui/core';
 
 import 'ace-builds/src-noconflict/mode-java';
 import 'ace-builds/src-noconflict/mode-python';
@@ -34,10 +34,17 @@ class Editor extends Component {
     })
   }
 
-  onChange = (value) => {
+  onChangeText = (value) => {
     this.setState({
       ...this.state,
       text: value
+    })
+  }
+
+  onChangeType = (event) => {
+    this.setState({
+      ...this.state,
+      type: event.target.value
     })
   }
 
@@ -111,12 +118,12 @@ class Editor extends Component {
             <Grid item xs={12}>
               <AceEditor
                 name='editor'
-                mode={this.props.language}
+                mode={this.state.type}
                 theme={theme}
                 height={this.state.editorHeight}
                 width={this.state.editorWidth}
                 value={this.state.text}
-                onChange={this.onChange}
+                onChange={this.onChangeText}
                 showPrintMargin={false}
                 editorProps={{ $blockScrolling: true }}
                 setOptions={{
@@ -127,6 +134,18 @@ class Editor extends Component {
               />
             </Grid>
             <Grid item xs={12} style={{ textAlign: 'right', marginTop: '0.75%' }}>
+              <Select
+                labelId='select-language-label'
+                id='select-language'
+                value={this.state.type}
+                onChange={this.onChangeType}
+                style={{ color: '#ffffff', marginRight: '0.75%' }}
+              >
+                <MenuItem value='plaintext'>None</MenuItem>
+                <MenuItem value='python'>Python</MenuItem>
+                <MenuItem value='java'>Java</MenuItem>
+                <MenuItem value='c_cpp'>C++</MenuItem>
+              </Select>
               {this.renderSubmit()}
             </Grid>
           </Grid>

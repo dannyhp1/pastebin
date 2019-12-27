@@ -7,6 +7,9 @@ import { Grid, Button, CircularProgress, Select, MenuItem } from '@material-ui/c
 import 'ace-builds/src-noconflict/mode-java';
 import 'ace-builds/src-noconflict/mode-python';
 import 'ace-builds/src-noconflict/mode-c_cpp';
+import 'ace-builds/src-noconflict/mode-javascript';
+import 'ace-builds/src-noconflict/mode-sql';
+import 'ace-builds/src-noconflict/mode-json';
 import 'ace-builds/src-noconflict/mode-plain_text';
 import 'ace-builds/src-noconflict/theme-monokai';
 
@@ -145,6 +148,9 @@ class Editor extends Component {
                 <MenuItem value='python'>Python</MenuItem>
                 <MenuItem value='java'>Java</MenuItem>
                 <MenuItem value='c_cpp'>C++</MenuItem>
+                <MenuItem value='javascript'>Javascript</MenuItem>
+                <MenuItem value='sql'>SQL</MenuItem>
+                <MenuItem value='json'>JSON</MenuItem>
               </Select>
               {this.renderSubmit()}
             </Grid>

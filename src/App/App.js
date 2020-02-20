@@ -8,12 +8,12 @@ import 'react-notifications-component/dist/theme.css'
 import './App.css';
 
 // Backend endpoint to save data.
-const DEV_POST_URL = 'http://localhost:5000/pastebin_save'
+const DEV_POST_URL = 'http://localhost:5000/pastebin/save'
 const PROD_POST_URL = 'https://dev.dannyhp.com:8443/pastebin_save'
 const POST_URL = PROD_POST_URL
 
 // Backend endpoint to load data.
-const DEV_GET_URL = 'http://localhost:5000/pastebin_load/%s'
+const DEV_GET_URL = 'http://localhost:5000/pastebin/load/%s'
 const PROD_GET_URL= 'https://dev.dannyhp.com:8443/pastebin_load/%s'
 const GET_URL = PROD_GET_URL
 

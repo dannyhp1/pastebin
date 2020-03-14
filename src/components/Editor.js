@@ -79,9 +79,7 @@ class Editor extends Component {
       text: this.state.text,
       type: this.state.type
     }).then(response => {
-      console.log(response)
-      const status = response.data.status
-      
+      const status = response.data.status      
       if(status === 'success') {
         const post_id = response.data.id
         this.setState({

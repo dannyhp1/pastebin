@@ -1,2 +1,6 @@
 # Pastebin
-This project serves as the front-end for the pastebin project (https://github.com/dannyhp1/pastebin).
+###### Production
+{Insert build tag here.}
+
+## What is it?
+Pastebin is a text storage application for all of your snippets.

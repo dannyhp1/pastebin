@@ -33,7 +33,7 @@ function App() {
           exact
           path={routes['sourceCode']}
           component={() => {
-            window.location.href = 'https://github.com/dannyhp1/pastebin'
+            window.location.href = 'https://github.com'
           }}
         />
       </Router>

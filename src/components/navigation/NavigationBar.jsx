@@ -48,7 +48,7 @@ function NavigationBar() {
           <Typography variant='h6' color='inherit' className={css(styles.grow)}>
             Pastebin
           </Typography>
-          <Button color='inherit' onClick={() => setPath(routes['sourceCode'])}>Source Code</Button>
+  
         </Toolbar>
       </AppBar>
     </div>
